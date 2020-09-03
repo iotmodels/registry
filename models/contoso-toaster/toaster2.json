@@ -12,7 +12,8 @@
     {
       "@type": ["Telemetry", "AngularAcceleration"],
       "name": "temperature",
-      "schema": "double"
+      "schema": "double",
+      "unit": "radianPerSecondSquared"
     },
     {
       "@type": "Property",
