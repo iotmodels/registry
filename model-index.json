@@ -9,5 +9,9 @@
   "dtmi:azureiot:AzureDeviceUpdateCore;1": {
     "path": "models/azureiot-azuredeviceupdatecore/AzureDeviceUpdate.json",
     "depends": []
+  },
+  "dtmi:dev:rido:demo;2": {
+    "path": "models/dev-rido-demo/demo2.json",
+    "depends": []
   }
 }

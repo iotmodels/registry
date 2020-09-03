@@ -1,0 +1,31 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:dev:rido:demo;2",
+    "@type": "Interface",
+    "displayName": "demo",
+    "contents": [
+      { 
+        "@type" : "Property", 
+        "name" : "realDemo", 
+        "schema" : "float" 
+      },
+      {
+        "@type": "Telemetry",
+        "name": "temperature",
+        "schema": "double"
+      },
+      {
+        "@type": "Property",
+        "name": "deviceStatus",
+        "schema": "string"
+      },
+      {
+        "@type": "Command",
+        "name": "reboot",
+        "request": {
+          "name": "delay",
+          "schema": "integer"
+        }
+      }
+    ]
+  }
