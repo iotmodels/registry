@@ -5,6 +5,11 @@
     "displayName": "demo",
     "contents": [
       { 
+        "@type" : "Component", 
+        "name" : "devInfo", 
+        "schema" : "dtmi:azure:DeviceManagement:DeviceInformation;1" 
+      },
+      { 
         "@type" : "Property", 
         "name" : "realDemo", 
         "schema" : "float" 
