@@ -65,5 +65,11 @@
   "dtmi:com:SmartThings:smartspoon;1": {
     "path": "models/com-smartthings-smartspoon/smartspoon.json",
     "depends": []
+  },
+  "dtmi:com:example:thermostat;3": {
+    "path": "models/com-example-thermostat/thermostat-2.json",
+    "depends": [
+      "dtmi:azure:DeviceManagement:DeviceInformation;1"
+    ]
   }
 }
