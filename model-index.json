@@ -41,5 +41,11 @@
     "depends": [
       "dtmi:azure:DeviceManagement:DeviceInformation;1"
     ]
+  },
+  "dtmi:contoso:toaster;1": {
+    "path": "models/contoso-toaster/toaster.json",
+    "depends": [
+      "dtmi:azure:DeviceManagement:DeviceInformation;1"
+    ]
   }
 }
