@@ -1,0 +1,17 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:com:m1;1",
+    "@type": "Interface",
+    "contents": [
+        { 
+            "@type" : "Component", 
+            "name" : "devInfo", 
+            "schema" : "dtmi:azure:DeviceManagement:DeviceInformation;1" 
+        },
+        { 
+            "@type" : "Property", 
+            "name" : "p1", 
+            "schema" : "NOT-SCHEMA" 
+        }
+    ]   
+}

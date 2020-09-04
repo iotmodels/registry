@@ -53,5 +53,11 @@
     "depends": [
       "dtmi:azure:DeviceManagement:DeviceInformation;1"
     ]
+  },
+  "dtmi:com:m1;1": {
+    "path": "models/com-m1/model1.json",
+    "depends": [
+      "dtmi:azure:DeviceManagement:DeviceInformation;1"
+    ]
   }
 }
