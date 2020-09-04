@@ -53,5 +53,9 @@
     "depends": [
       "dtmi:azure:DeviceManagement:DeviceInformation;1"
     ]
+  },
+  "dtmi:com:example:Thermostat;1": {
+    "path": "models/com-example-thermostat/Thermostat.json.json",
+    "depends": []
   }
 }
