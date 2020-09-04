@@ -53,5 +53,11 @@
     "depends": [
       "dtmi:azure:DeviceManagement:DeviceInformation;1"
     ]
+  },
+  "dtmi:pnp:demos:SmartSpoon;1": {
+    "path": "models/pnp-demos-smartspoon/SmartSpoon.json",
+    "depends": [
+      "dtmi:my:device:base;1"
+    ]
   }
 }

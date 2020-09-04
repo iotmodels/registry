@@ -1,0 +1,36 @@
+{
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:pnp:demos:SmartSpoon;1",
+  "@type": "Interface",
+  "displayName": "Smart Spoon",
+  "contents": [
+    { 
+      "@type" : "Component", 
+      "name" : "lastUse", 
+      "schema" : "dtmi:my:device:base;1" 
+    },
+    { 
+      "@type" : "Property", 
+      "name" : "timesUsed", 
+      "schema" : "integer" 
+    },
+    {
+      "@type": "Telemetry",
+      "name": "temperature",
+      "schema": "double"
+    },
+    {
+      "@type": "Property",
+      "name": "deviceStatus",
+      "schema": "string"
+    },
+    {
+      "@type": "Command",
+      "name": "reboot",
+      "request": {
+        "name": "delay",
+        "schema": "integer"
+      }
+    }
+  ]
+}
