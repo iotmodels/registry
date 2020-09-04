@@ -55,7 +55,7 @@
     ]
   },
   "dtmi:com:example:Thermostat;1": {
-    "path": "models/com-example-thermostat/Thermostat.json.json",
+    "path": "models/com-example-thermostat/Thermostat_.json",
     "depends": []
   }
 }
