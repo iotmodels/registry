@@ -1,0 +1,17 @@
+name: storage-upload
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: bacongobbler/azure-blob-storage-upload@v1.1.1
+        with:
+          source_dir: '.'
+          container_name: '$web'
+          connection_string: ${{ secrets.CONNECTION_STRING_KEY1 }}
+          sync: true
