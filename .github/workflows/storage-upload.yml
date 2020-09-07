@@ -9,9 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: bacongobbler/azure-blob-storage-upload@v1.1.1
+      - uses: ./.github/actions/sync-models-to-storage
         with:
-          source_dir: '.'
+          account_name: staticwebmodels
+          account_key: ${{ secrets.STORAGE_KEY_ONE }}
           container_name: '$web'
-          connection_string: ${{ secrets.CONNECTION_STRING_KEY1 }}
-          sync: true
+          exclude_path: '.github;.git'
+          exclude_pattern: '*.md;*.ps1;addModel.js;.gitignore'
