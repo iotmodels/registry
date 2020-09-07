@@ -71,5 +71,12 @@
     "depends": [
       "dtmi:azure:DeviceManagement:DeviceInformation;1"
     ]
+  },
+  "dtmi:com:example:smartmug;1": {
+    "path": "models/com-example-smartmug/smartmug.json",
+    "depends": [
+      "dtmi:my:device:interface;1",
+      "dtmi:azure:DeviceManagement:DeviceInformation;1"
+    ]
   }
 }

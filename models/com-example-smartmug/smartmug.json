@@ -1,0 +1,41 @@
+{
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:com:example:smartmug;1",
+  "@type": "Interface",
+  "displayName": "smartmug",
+  "contents": [
+    {
+      "@type": "Telemetry",
+      "name": "temperature",
+      "schema": "double"
+    },
+    {
+      "@type": "Property",
+      "name": "deviceStatus",
+      "schema": "string"
+    },
+    {
+      "@type": "Command",
+      "name": "reboot",
+      "request": {
+        "name": "delay",
+        "schema": "integer"
+      }
+    },
+    {
+      "@type": "Component",
+      "name": "myinterface01",
+      "schema": "dtmi:my:device:interface;1"
+    },
+    {
+      "@type": "Component",
+      "name": "myinterface02",
+      "schema": "dtmi:my:device:interface;1"
+    },
+    {
+      "@type": "Component",
+      "name": "deviceInfo",
+      "schema": "dtmi:azure:DeviceManagement:DeviceInformation;1"
+    }
+  ]
+}
