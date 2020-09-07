@@ -1,0 +1,35 @@
+# This is a basic workflow to help you get started with Actions
+
+name: PR Validator
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  validate-index:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+    - uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.x
+        
+    - id: check index
+      run: node .github/workflows/validate-index.js
+    
+  validate-models:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - id: files
+      uses: jitterbit/get-changed-files@v1
+    
+    - name: Validate models edits
+      run: |
+        dotnet tool install --global dtdl2-validator
+        .github/workflows/validate-models.sh ${{steps.files.outputs.added_modified}}

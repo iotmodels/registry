@@ -1,4 +1,4 @@
-name: storage-upload
+name: deploy to storage static website
 
 on:
   push:
