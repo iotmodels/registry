@@ -1,9 +1,10 @@
-name: storage-upload
+name: Deploy static website
 
 on:
   push:
     branches: [ master ]
-
+    paths-ignore:
+      - ".github/**"
 jobs:
   upload:
     runs-on: ubuntu-latest
