@@ -78,5 +78,9 @@
       "dtmi:my:device:interface;1",
       "dtmi:azure:DeviceManagement:DeviceInformation;1"
     ]
+  },
+  "dtmi:example:foo;1": {
+    "path": "models/example-foo/foo.json",
+    "depends": []
   }
 }
