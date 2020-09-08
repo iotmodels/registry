@@ -14,9 +14,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
-    - uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.1.x
         
     - name: check index
       run: node .github/workflows/validate-index.js
@@ -25,7 +22,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-
+    - uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.x
+        
     - id: files
       uses: jitterbit/get-changed-files@v1
     
