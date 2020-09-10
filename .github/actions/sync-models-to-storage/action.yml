@@ -1,0 +1,24 @@
+name: "Sync Models to Storage"
+description: "syncs IoT Models to a storage account"
+inputs:
+  account_name:
+    description: "Storage account name"
+    required: true
+  account_key:
+    description: "Storage account key"
+    required: true
+  container_name:
+    description: "The sync destination container"
+    required: true
+  source_dir:
+    description: "The source file path to sync from. Defaults to '.'"
+    required: false
+  exclude_path:
+    description: "Paths to exclude from the sync. For example '.github'"
+    required: false
+  exclude_pattern:
+      description: "File patterns to exclude from the sync. For example '*.md;*.ps1'"
+      required: false
+runs:
+  using: "docker"
+  image: "Dockerfile"
