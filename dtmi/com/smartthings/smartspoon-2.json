@@ -1,19 +1,18 @@
 {
   "@context": "dtmi:dtdl:context;2",
-  "@id": "dtmi:contoso:toaster;2",
+  "@id": "dtmi:com:SmartThings:smartspoon;2",
   "@type": "Interface",
-  "displayName": "toaster v1",
+  "displayName": "Smart Spoon",
   "contents": [
     { 
-      "@type" : "Component", 
-      "name" : "devInfo", 
-      "schema" : "dtmi:azure:DeviceManagement:DeviceInformation;1" 
+      "@type" : "Property", 
+      "name" : "timesUsedThisWeek", 
+      "schema" : "integer" 
     },
     {
-      "@type": ["Telemetry", "AngularAcceleration"],
+      "@type": "Telemetry",
       "name": "temperature",
-      "schema": "double",
-      "unit": "radianPerSecondSquared"
+      "schema": "double"
     },
     {
       "@type": "Property",

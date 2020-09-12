@@ -1,5 +1,6 @@
 const fs = require('fs')
 const path = require('path')
+const mkdirp = require('mkdirp')
 
 /**
  * @description "removes the dtmi prefix and the version, and replaces : with -"
@@ -9,10 +10,10 @@ const path = require('path')
 const dtmi2path = (dtmi) => {
   const idAndVersion = dtmi.toLowerCase().split(';')
   const ids = idAndVersion[0].split(':')
-  ids.shift()
-  const modelFolder = ids.join('-')
-  const version = idAndVersion[1]
-  return { modelFolder, version }
+  const fileName = `${ids[ids.length - 1]}-${idAndVersion[1]}.json`
+  ids.pop()
+  const modelFolder = ids.join('/')
+  return { modelFolder, fileName }
 }
 
 /**
@@ -50,42 +51,27 @@ const addModel = (file) => {
     process.exit()
   }
   const rootJson = JSON.parse(fs.readFileSync(file, 'utf-8'))
-  const index = JSON.parse(fs.readFileSync('model-index.json', 'utf-8'))
 
   if (rootJson['@context'] && rootJson['@context'] === 'dtmi:dtdl:context;2') {
     const id = rootJson['@id']
-    if (index[id]) {
-      console.error(`ERROR: dtmi ${id} already exists in the model-index. Aborting.`)
-      process.exit()
-    }
 
     const deps = getDependencies(rootJson)
     deps.forEach(d => {
-      if (index[d]) {
+      const { modelFolder, fileName } = dtmi2path(d)
+      if (fs.existsSync(path.join(modelFolder, fileName))) {
         console.log(`Dependency ${d} found in the index`)
       } else {
-        console.error(`ERROR: Dependency ${d} NOT found in the index.Aborting`)
+        console.error(`ERROR: Dependency ${d} NOT found. Aborting`)
         process.exit()
       }
     })
 
-    const { modelFolder, version } = dtmi2path(id)
-    const folder = path.join('models/',modelFolder)
-    if (!fs.existsSync(folder)) {
-      fs.mkdirSync(folder)
-    }
-
-    const fileToAdd = path.join(folder, `${version}.json`)
-
-    fs.copyFileSync(file, fileToAdd)
-
-    index[id] = {
-      path: fileToAdd,
-      depends: deps
-    }
-
-    fs.writeFileSync('model-index.json', JSON.stringify(index, null, 2))
-    console.log(`Model ${id} added successfully to ${fileToAdd}.`)
+    const { modelFolder, fileName } = dtmi2path(id)
+    mkdirp(modelFolder).then(m => {
+      console.log(`folder created ${modelFolder}`)
+      fs.copyFileSync(file, path.join(modelFolder, fileName))
+      console.log(`Model ${id} added successfully to ${modelFolder} /  ${fileName}.`)
+    })
   } else {
     console.error(`File ${file} is not a valid DTDL 2 interface`)
   }
