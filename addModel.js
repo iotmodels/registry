@@ -3,7 +3,7 @@ const path = require('path')
 const mkdirp = require('mkdirp')
 
 /**
- * @description "removes the dtmi prefix and the version, and replaces : with -"
+ * @description "Converts DTMI to folder/file convention"
  * @param {string} dtmi
  * @returns {(string,string)}
  */
@@ -67,10 +67,14 @@ const addModel = (file) => {
     })
 
     const { modelFolder, fileName } = dtmi2path(id)
+    if (fs.existsSync(path.join(modelFolder, fileName))) {
+      console.log(`ERROR: ID ${id} already exists at ${modelFolder}/${fileName} . Aborting `)
+      process.exit()
+    }
     mkdirp(modelFolder).then(m => {
       console.log(`folder created ${modelFolder}`)
       fs.copyFileSync(file, path.join(modelFolder, fileName))
-      console.log(`Model ${id} added successfully to ${modelFolder} /  ${fileName}.`)
+      console.log(`Model ${id} added successfully to ${modelFolder}/${fileName}.`)
     })
   } else {
     console.error(`File ${file} is not a valid DTDL 2 interface`)
