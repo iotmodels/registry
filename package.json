@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "description": "This repo contains a prototype to share DTDL models using GitHub pages",
   "scripts": {
-    "validate-index": "node .github/workflows/validate-index.js",
     "validate-model": "dtdl2-validator"
   },
   "repository": {
