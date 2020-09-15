@@ -22,7 +22,7 @@
     { 
       "@type" : "Property", 
       "name" : "bb", 
-      "schema" : "dtmi:com:demo:myModel:person;1" 
+      "schema" : "dtmi:com:global:myModel:person;1" 
     }
 
   ]
