@@ -5,7 +5,7 @@
   "schemas": [
     {
       "@type": "Object",
-      "@id": "dtmi:com:global:myModel:person;1",
+      "@id": "dtmi:com:demo:myModel:person;1",
       "fields": [
         { "name": "firstName", "schema": "string"},
         { "name": "lastName", "schema": "string"},
@@ -17,12 +17,12 @@
     { 
       "@type" : "Property", 
       "name" : "aa", 
-      "schema" : "dtmi:com:global:myModel:person;1" 
+      "schema" : "dtmi:com:demo:myModel:person;1" 
     },
     { 
       "@type" : "Property", 
       "name" : "bb", 
-      "schema" : "dtmi:com:global:myModel:person;1" 
+      "schema" : "dtmi:com:demo:myModel:person;1" 
     }
 
   ]
