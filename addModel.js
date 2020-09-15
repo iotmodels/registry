@@ -18,7 +18,7 @@ const addModel = async (file) => {
     process.exit()
   }
   await parseWithDotNet(file)
-  
+
   const rootJson = JSON.parse(fs.readFileSync(file, 'utf-8'))
 
   if (rootJson['@context'] && rootJson['@context'] === 'dtmi:dtdl:context;2') {
