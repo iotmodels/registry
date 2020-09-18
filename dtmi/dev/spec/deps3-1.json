@@ -1,0 +1,15 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:dev:spec:deps3;1",
+    "@type": "Interface",
+    "extends": ["dtmi:dev:spec:deps0;1", "dtmi:dev:spec:extends;1"],
+    "displayName": "deps3",
+    "contents": [
+      { 
+          "@type" : "Component", 
+          "name" : "dep1", 
+          "schema" : "dtmi:dev:spec:extends;1" 
+      }
+    ]
+  }
+  
