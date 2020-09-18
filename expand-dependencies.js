@@ -35,7 +35,7 @@ export const expand = async dtmi => {
 
   const walkDeps = async dtmi => {
     const { folder, file } = dtmi2path(dtmi)
-    const url = `/${folder}/${file}`
+    const url = `${folder}/${file}`
     const doc = await (await window.fetch(url)).json()
     knownIds.push(dtmi)
     rootAndDeps[rootAndDeps.length] = doc
