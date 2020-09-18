@@ -1,0 +1,14 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:dev:spec:deps2;1",
+    "@type": "Interface",
+    "displayName": "deps2",
+    "contents": [
+      { 
+          "@type" : "Component", 
+          "name" : "dep1", 
+          "schema" : "dtmi:dev:spec:extends;1" 
+      }
+    ]
+  }
+  
