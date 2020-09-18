@@ -31,7 +31,7 @@ import { expand } from './expand-dependencies.js'
       bindTemplate('models-list-template', JSON.stringify(model, null, 2), 'rendered')
     }
     button2.onclick = async () => {
-      const modelResolver = 'https:model-resolver.azurewebsites.net/api/expand?id='
+      const modelResolver = 'https://model-resolver.azurewebsites.net/api/expand?id='
       bindTemplate('models-iframe-template', `${modelResolver}${query.value}`, 'rendered')
     }
   }
