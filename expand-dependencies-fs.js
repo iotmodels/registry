@@ -1,4 +1,4 @@
-const fs = require('fs')
+import fs from 'fs'
 
 const dtmi2path = dtmi => {
   const idAndVersion = dtmi.toLowerCase().split(';')
