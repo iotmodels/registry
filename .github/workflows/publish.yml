@@ -1,4 +1,4 @@
-name: validate-models
+name: PublishModels
 
 on:
   push:
