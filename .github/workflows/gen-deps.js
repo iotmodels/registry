@@ -12,6 +12,7 @@ import { expand } from '../../expand-dependencies-fs.js'
         const id = json['@id']
         const deps = await expand(id)
         fs.writeFileSync(file.replace('.json', '.deps.json'), JSON.stringify(deps, null, 2))
+        console.log("created deps: " + file.replace('.json', '.deps.json'))
       } else {
         console.error('File not found: ' + file)
       }
