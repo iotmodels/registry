@@ -48,6 +48,7 @@ export const expand = async dtmi => {
       }
     }
   }
+
   await walkDeps(dtmi)
   return rootAndDeps
 }
