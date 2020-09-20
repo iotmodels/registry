@@ -1,0 +1,34 @@
+name: validate-models
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+     
+      - id: files
+        uses: jitterbit/get-changed-files@v1
+
+      - name: restore npm packages
+        run: npm i
+        
+      - name: Generate Deps
+        run: node --experimental-modules .github/workflows/gen-deps.js ${{steps.files.outputs.added_modified}}
+      
+      - name: CLI push files
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            for changed_file in ${{ steps.files.outputs.added_modified }}; do
+              echo "Submitting ${changed_file} to Azure Storage"
+              az storage blob upload --connection-string "${{ secrets.STORAGE_CONNECTION_STRING }}" --container-name "$web" --name "${changed_file}" --file "${changed_file}" --no-progress --verbose
+              
+              echo "Submitting ${changed_file/.json/.deps.json} to Azure Storage"
+              az storage blob upload --connection-string "${{ secrets.STORAGE_CONNECTION_STRING }}" --container-name "$web" --name "${changed_file/.json/.deps.json}" --file "${changed_file/.json/.deps.json}" --no-progress --verbose
+            done
+

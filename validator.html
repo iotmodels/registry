@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    
+</head>
+<body>
+    <div>
+        <textarea id="model">[
+            {
+              "@context": "dtmi:dtdl:context;2",
+              "@id": "dtmi:dev:spec:deps1;1",
+              "@type": "Interface",
+              "displayName": "deps1",
+              "contents": [
+                {
+                  "@type": "Component",
+                  "name": "dep1",
+                  "schema": "dtmi:dev:spec:deps0;1"
+                }
+              ]
+            },
+            {
+              "@context": "dtmi:dtdl:context;2",
+              "@id": "dtmi:dev:spec:deps0;1",
+              "@type": "Interface",
+              "displayName": "deps0",
+              "contents": [
+                {
+                  "@type": "Property",
+                  "name": "deviceStatus",
+                  "schema": "string"
+                }
+              ]
+            }
+          ]    
+        </textarea>
+        <button id="valButton">Validate</button>
+        <div id="results"></div>
+    </div>
+    
+    <script src="validator.js"></script>
+</body>
+</html>
