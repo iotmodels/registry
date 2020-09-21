@@ -17,7 +17,6 @@
     <h1>IoT Models Registry</h1>
     <hr />
     <div>
-        https://iotmodels.github.io/registry/dtmi/rido/device/sample-3.json
         <div>
             Direct interface files
             <a href="dtmi/rido/device/sample-3.json">dtmi:rido:device:sample;3</a>
@@ -45,22 +44,28 @@
         {{#Default}}
             <ul>
                 {{#telemetry}}
-                <li>{{name}} {{schema}}</li>
+                <li>t: {{name}} {{schema}}</li>
                 {{/telemetry}}
                 {{#properties}}
-                <li>{{name}} {{schema}} {{writable}}</li>
+                <li>p: {{name}} {{schema}} {{writable}}</li>
                 {{/properties}}
+                {{#commands}}
+                <li>cmd: {{name}}</li>
+                {{/commands}}
             </ul>
         {{/Default}}
         {{#Components}}
-        {{name}}
+        {{name}} ({{schema}})
         <ul>
             {{#telemetry}}
-            <li>{{name}} {{schema}}</li>
+            <li>t: {{name}} {{schema}}</li>
             {{/telemetry}}
             {{#properties}}
-            <li>{{name}} {{schema}} {{writable}}</li>
+            <li>p: {{name}} {{schema}} {{writable}}</li>
             {{/properties}}
+            {{#commands}}
+            <li>cmd: {{name}}</li>
+            {{/commands}}
         </ul>
         {{/Components}}
     </script>

@@ -31,22 +31,29 @@ import { dtmi2path } from './dtmi2path.js'
       const docs = await (await window.fetch(url)).json()
       const rootDoc = docs.filter(doc => doc['@id'] === dtmi)[0]
 
-      const addComp2Model = (name, comp) => {
+      const addComp2Model = (name, cschema) => {
+        const comp = docs.filter(doc => doc['@id'] === cschema)[0]
         const compPos = model.Components.push({ properties: [], telemetry: [], commands: [] })
         const compItem = model.Components[compPos - 1]
         compItem.name = name
+        compItem.schema = cschema
         if (Array.isArray(comp.contents)) {
           comp.contents.forEach(c => {
-            switch (c['@type']) {
-              case 'Telemetry':
-                compItem.telemetry.push(c)
-                break
-              case 'Property':
-                compItem.properties.push(c)
-                break
-              case 'Command':
-                compItem.commands.push(c)
-                break
+            if (Array.isArray(c['@type'])) {
+              if (c['@type'].filter(t => t === 'Telemetry').length > 0) compItem.telemetry.push(c)
+              if (c['@type'].filter(t => t === 'Property').length > 0) compItem.properties.push(c)
+            } else {
+              switch (c['@type']) {
+                case 'Telemetry':
+                  compItem.telemetry.push(c)
+                  break
+                case 'Property':
+                  compItem.properties.push(c)
+                  break
+                case 'Command':
+                  compItem.commands.push(c)
+                  break
+              }
             }
           })
         }
@@ -71,8 +78,7 @@ import { dtmi2path } from './dtmi2path.js'
               break
             case 'Component':
               if (typeof c.schema !== 'object') {
-                const iface = docs.filter(doc => doc['@id'] === c.schema)[0]
-                addComp2Model(c.name, iface)
+                addComp2Model(c.name, c.schema)
               }
               break
           }
