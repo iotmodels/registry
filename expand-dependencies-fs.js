@@ -35,11 +35,12 @@ export const expand = async dtmi => {
   const rootAndDeps = []
 
   const walkDeps = async dtmi => {
+    console.log('walkDeps: ' + dtmi)
     const { folder, file } = dtmi2path(dtmi)
     const url = `${folder}/${file}`
     const doc = JSON.parse(fs.readFileSync(url, 'utf-8'))
     knownIds.push(dtmi)
-    rootAndDeps[rootAndDeps.length] = doc
+    rootAndDeps.push(doc)
     console.log(dtmi)
     const deps = getDependencies(doc)
     for await (const d of deps) {

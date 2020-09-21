@@ -3,7 +3,12 @@ import glob from 'glob'
 import { expand } from './expand-dependencies-fs.js'
 
 const main = () => {
-  glob('dtmi/dev/**/*.json', (err, files) => {
+  glob('dtmi/**/*.deps.json', (err, files) => {
+    if (err) throw err
+    files.forEach(f => fs.unlinkSync(f))
+  })
+
+  glob('dtmi/**/*.json', (err, files) => {
     if (err) throw err
     files.forEach(async f => {
       console.log('processing ' + f)
