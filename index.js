@@ -1,6 +1,10 @@
-import { dtmi2path } from './dtmi2path.js'
+import { expand } from './expand-dependencies.js'
 
 (async () => {
+  /**
+   * @param {string} id - element id
+   * @returns {HTMLElement}
+   */
   const gbid = (id) => {
     const el = document.getElementById(id)
     if (el === null) {
@@ -8,29 +12,27 @@ import { dtmi2path } from './dtmi2path.js'
     }
     return el
   }
-
-  const loadModel = path => {
-    return new Promise((resolve, reject) => {
-      window.fetch(path)
-        .then(r => r.json())
-        .then(m => resolve(m))
-        .catch(e => reject(e))
-    })
+  /**
+   * @param {string} template
+   * @param {Array<modelInfo>} models
+   * @param {string} target
+   */
+  const bindTemplate = (template, models, target) => {
+    gbid(target).innerHTML = Mustache.render(gbid(template).innerHTML, models)
   }
 
   const init = () => {
     const button = gbid('search')
+    const button2 = gbid('search2')
+    const query = gbid('q')
     button.onclick = async () => {
-      const query = gbid('q')
-      const results = gbid('results')
-      const { modelFolder, fileName } = dtmi2path(query.value)
-      try {
-        const json = await loadModel(`${modelFolder}/${fileName}`)
-        results.innerHTML = `${json['@id']} found in <a href=${modelFolder}/${fileName}>${modelFolder}/${fileName}</a>`
-      } catch (e) {
-        console.log(e)
-        results.innerText = `Not Found at ${modelFolder}/${fileName}`
-      }
+      bindTemplate('models-list-template', '', 'rendered')
+      const model = await expand(query.value)
+      bindTemplate('models-list-template', JSON.stringify(model, null, 2), 'rendered')
+    }
+    button2.onclick = async () => {
+      const modelResolver = 'https://model-resolver.azurewebsites.net/api/expand?id='
+      bindTemplate('models-iframe-template', `${modelResolver}${query.value}`, 'rendered')
     }
   }
   init()

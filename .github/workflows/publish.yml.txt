@@ -1,0 +1,25 @@
+name: PublishModels
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+     
+      - id: files
+        uses: jitterbit/get-changed-files@v1
+
+      - name: restore npm packages
+        run: npm i
+        
+      - name: Generate Deps
+        run: node --experimental-modules .github/workflows/gen-deps.js ${{steps.files.outputs.added_modified}}
+      
+      - name: CLI push files
+        run: .github/workflows/azcopy.sh ${{steps.files.outputs.added_modified}}
+

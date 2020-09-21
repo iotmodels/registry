@@ -1,0 +1,33 @@
+[
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:com:SmartThings:SmartKnife;1",
+    "@type": "Interface",
+    "displayName": "SmartKnife",
+    "contents": [
+      {
+        "@type": "Telemetry",
+        "name": "InUse",
+        "schema": "boolean"
+      },
+      {
+        "@type": "Telemetry",
+        "name": "temperature",
+        "schema": "double"
+      },
+      {
+        "@type": "Property",
+        "name": "deviceStatus",
+        "schema": "string"
+      },
+      {
+        "@type": "Command",
+        "name": "reboot",
+        "request": {
+          "name": "delay",
+          "schema": "integer"
+        }
+      }
+    ]
+  }
+]

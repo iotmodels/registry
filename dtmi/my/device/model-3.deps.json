@@ -1,0 +1,87 @@
+[
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:my:device:model;3",
+    "@type": "Interface",
+    "extends": "dtmi:my:device:base;1",
+    "displayName": "mydevice",
+    "contents": [
+      {
+        "@type": "Telemetry",
+        "name": "workingSet",
+        "schema": "double"
+      },
+      {
+        "@type": "Property",
+        "name": "refreshInterval",
+        "schema": "integer",
+        "writable": true
+      },
+      {
+        "@type": "Component",
+        "name": "myinterface01",
+        "schema": "dtmi:my:device:interface;1"
+      },
+      {
+        "@type": "Component",
+        "name": "myinterface02",
+        "schema": "dtmi:my:device:interface;1"
+      },
+      {
+        "@type": "Command",
+        "name": "myComand",
+        "commandType": "synchronous",
+        "request": {
+          "name": "startTim",
+          "schema": "dateTime"
+        },
+        "response": {
+          "name": "cmdResult",
+          "schema": {
+            "@type": "Object",
+            "fields": [
+              {
+                "name": "aName",
+                "schema": "string"
+              },
+              {
+                "name": "aNumber",
+                "schema": "float"
+              },
+              {
+                "name": "aDate",
+                "schema": "dateTime"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:my:device:base;1",
+    "@type": "Interface",
+    "displayName": "mydevice",
+    "contents": [
+      {
+        "@type": "Property",
+        "name": "serialNumber",
+        "schema": "string"
+      }
+    ]
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:my:device:interface;1",
+    "@type": "Interface",
+    "displayName": "minimal interface",
+    "contents": [
+      {
+        "@type": "Property",
+        "name": "serialNumber",
+        "schema": "string"
+      }
+    ]
+  }
+]

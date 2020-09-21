@@ -1,0 +1,29 @@
+[
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:dev:spec:extends;4",
+    "@type": "Interface",
+    "extends": "dtmi:dev:spec:deps0;1",
+    "displayName": "deps1",
+    "contents": [
+      {
+        "@type": "Property",
+        "name": "p1",
+        "schema": "string"
+      }
+    ]
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:dev:spec:deps0;1",
+    "@type": "Interface",
+    "displayName": "deps0",
+    "contents": [
+      {
+        "@type": "Property",
+        "name": "deviceStatus",
+        "schema": "string"
+      }
+    ]
+  }
+]
