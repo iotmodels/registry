@@ -4,7 +4,7 @@ import { checkIds } from '../../repo-convention.js'
 
 for (let i = 2; i < argv.length; i++) {
   const file = argv[i]
-  if (file.indexOf('dtmi')>=0){
+  if (file.indexOf('dtmi')>=0 && file.indexOf('.deps.json') === -1) {
     console.log('\nchecking: ' + file)
     if (fs.existsSync(file)) {
       checkIds(JSON.parse(fs.readFileSync(file, 'utf-8')))
