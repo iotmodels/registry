@@ -24,4 +24,5 @@ steps:
     azureSubscription: 'Converted Rido_MSDN(d8ed1ba9-6317-430f-9476-e16880367402)'
     Destination: 'AzureBlob'
     storage: 'iotmodelsregistry'
-    ContainerName: '$web'    
+    ContainerName: '$web'
+    BlobPrefix: 'dtmi'
