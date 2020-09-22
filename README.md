@@ -13,14 +13,14 @@ The models, and the index are available in:
 This repo accepts new model submission following the next rules.
 
 - Valid DTDL files.
-- Dependencies can be resolved using the index
-- The files are stored following the `models` folder hierarchy
+- Dependencies can be resolved using the convention
+- The files are stored following the `dtmi` folder hierarchy
 
 There are automatic checks in place per each PR.
 
 ### Adding a new interface
 
-The script `addModel.js` (requires node) can be used to add the required interface to the `models` folder and update the `model-index`
+The script `addModel.js` (requires node) can be used to add the required interface to the repo.
 
 ### Validation
 
@@ -28,8 +28,10 @@ The repo provides some tools and scripts to validate your models.
 
 `dtdl2-validator`
 
-`validate-index`
-
 ## Resolving models
 
-The sister repo [iotmodels/dotnet-resolvers](https://github.com/iotmodels/dotnetresolvers) shows how to use the `model-index` to resolve models.
+```javascript
+const { modelFolder, fileName } = dtmi2path(dtmi)
+const url = `${modelFolder}/${fileName.replace('.json', '.deps.json')}`
+const docs = await (await window.fetch(url)).json()
+```

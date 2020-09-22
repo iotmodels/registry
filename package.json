@@ -8,7 +8,7 @@
     "add-model": "node --experimental-modules ./addModel.js",
     "resolve": "node --experimental-modules ./resolve.js",
     "validate-ids": "node --experimental-modules .github/workflows/validate-ids.js",
-    "gen-deps": "node --experimental-modules gen-deps.js"
+    "gen-deps": "node --experimental-modules gen-all-deps.js"
   },
   "repository": {
     "type": "git",

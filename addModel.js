@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import mkdirp from 'mkdirp'
 import { dtmi2path, getDependencies, checkIds } from './repo-convention.js'
-import { expand } from './expand-dependencies-fs.js'
+// import { expand } from './expand-dependencies-fs.js'
 
 // import { execSync } from 'child_process'
 // const parseWithDotNet = file => {

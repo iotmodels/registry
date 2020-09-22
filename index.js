@@ -37,6 +37,9 @@ import { dtmi2path } from './dtmi2path.js'
         const compItem = model.Components[compPos - 1]
         compItem.name = name
         compItem.schema = cschema
+        const { modelFolder, fileName } = dtmi2path(dtmi)
+        const url = `${modelFolder}/${fileName}`
+        compItem.schemaUrl = url
         if (Array.isArray(comp.contents)) {
           comp.contents.forEach(c => {
             if (Array.isArray(c['@type'])) {
@@ -63,6 +66,7 @@ import { dtmi2path } from './dtmi2path.js'
       model.id = rootDoc['@id']
       model.displayName = rootDoc.displayName
       model.Default = { properties: [], telemetry: [], commands: [] }
+      model.Default.schemaUrl = `${modelFolder}/${fileName}`
       model.Components = []
       if (Array.isArray(rootDoc.contents)) {
         rootDoc.contents.forEach(c => {
