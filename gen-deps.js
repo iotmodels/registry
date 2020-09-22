@@ -14,8 +14,12 @@ const main = () => {
       console.log('processing ' + f)
       const json = JSON.parse(fs.readFileSync(f, 'utf-8'))
       const id = json['@id']
-      const deps = await expand(id)
-      fs.writeFileSync(f.replace('.json', '.deps.json'), JSON.stringify(deps, null, 2))
+      if (id) {
+        const deps = await expand(id)
+        const depsFile = f.replace('.json', '.deps.json')
+        if (fs.existsSync(depsFile)) fs.unlinkSync(depsFile)
+        fs.writeFileSync(depsFile, JSON.stringify(deps, null, 2))
+      }
     })
   })
 }
