@@ -2,7 +2,14 @@ variables:
   - group: GitHub2StorageVars
 
 trigger:
-- master
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - dtmi/**
+
+pr: none
 
 pool:
   vmImage: 'ubuntu-latest'

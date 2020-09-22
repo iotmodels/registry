@@ -2,11 +2,12 @@ import fs from 'fs'
 import path from 'path'
 import mkdirp from 'mkdirp'
 import { dtmi2path, getDependencies, checkIds } from './repo-convention.js'
-import { execSync } from 'child_process'
+import { expand } from './expand-dependencies-fs.js'
 
-const parseWithDotNet = file => {
-  execSync(`dtdl2-validator /f=${file} /resolver=local`, { stdio: 'inherit' })
-}
+// import { execSync } from 'child_process'
+// const parseWithDotNet = file => {
+//   execSync(`dtdl2-validator /f=${file} /resolver=local`, { stdio: 'inherit' })
+// }
 
 /**
  * @description Adds a model to the repo. Validates ids, dependencies and set the right folder/file name
@@ -17,7 +18,7 @@ const addModel = async (file) => {
     console.error('file not found:' + file)
     process.exit()
   }
-  await parseWithDotNet(file)
+  // await parseWithDotNet(file)
 
   const rootJson = JSON.parse(fs.readFileSync(file, 'utf-8'))
 
@@ -45,9 +46,13 @@ const addModel = async (file) => {
       console.log(`ERROR: ID ${id} already exists at ${modelFolder}/${fileName} . Aborting `)
       process.exit()
     }
-    mkdirp(modelFolder).then(m => {
+    mkdirp(modelFolder).then(async m => {
       console.log(`folder created ${modelFolder}`)
       fs.copyFileSync(file, path.join(modelFolder, fileName))
+      const deps = await expand(id)
+      const depsFile = file.replace('.json', '.deps.json')
+      if (fs.existsSync(depsFile)) fs.unlinkSync(depsFile)
+      fs.writeFileSync(depsFile, JSON.stringify(deps, null, 2))
       console.log(`Model ${id} added successfully to ${modelFolder}/${fileName}.`)
     })
   } else {
@@ -55,9 +60,9 @@ const addModel = async (file) => {
   }
 }
 
-const main = () => {
+const main = async () => {
   const file = process.argv[2]
   console.log(`processing: ${file}`)
-  addModel(file)
+  await addModel(file)
 }
 main()
