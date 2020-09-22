@@ -8,21 +8,12 @@ trigger:
 - master
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
-- task: AzureFileCopy@4
+- task: AzureCLI@2
   inputs:
-    SourcePath: './dtmi/**/*.json'
     azureSubscription: 'Converted Rido_MSDN(d8ed1ba9-6317-430f-9476-e16880367402)'
-    Destination: 'AzureBlob'
-    storage: 'iotmodelsregistry'
-    ContainerName: '$web'
-    BlobPrefix: 'dtmi'
+    scriptType: 'bash'
+    addSpnToEnvironment: true
+    inlineScript: az storage blob upload-batch -d '$web/dtmi' --account-name iotmodelsregistry -s dtmi --if-umodified-since 2018-01-01T01:01:01Z --account-key ${IOTMODELS_ACCOUNT_KEY}
