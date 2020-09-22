@@ -49,11 +49,13 @@ const addModel = async (file) => {
     mkdirp(modelFolder).then(async m => {
       console.log(`folder created ${modelFolder}`)
       fs.copyFileSync(file, path.join(modelFolder, fileName))
+      console.log(`Model ${id} added successfully to ${modelFolder}/${fileName}`)
+
       const deps = await expand(id)
-      const depsFile = file.replace('.json', '.deps.json')
+      const depsFile = path.join(modelFolder, fileName.replace('.json', '.deps.json'))
       if (fs.existsSync(depsFile)) fs.unlinkSync(depsFile)
       fs.writeFileSync(depsFile, JSON.stringify(deps, null, 2))
-      console.log(`Model ${id} added successfully to ${modelFolder}/${fileName}.`)
+      console.log(`Model Deps of ${id} added successfully to ${depsFile}`)
     })
   } else {
     console.error(`File ${file} is not a valid DTDL 2 interface`)
