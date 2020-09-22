@@ -1,6 +1,6 @@
 import fs from 'fs'
 import { argv } from 'process'
-import { expand } from '../../expand-dependencies-fs.js'
+import { expand } from '../expand-dependencies-fs.js'
 
 (async () => {
   for (let i = 2; i < argv.length; i++) {

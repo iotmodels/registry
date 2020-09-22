@@ -1,6 +1,6 @@
 import fs from 'fs'
 import glob from 'glob'
-import { expand } from './expand-dependencies-fs.js'
+import { expand } from '../expand-dependencies-fs.js'
 
 const main = () => {
   // glob('dtmi/**/*.deps.json', (err, files) => {
