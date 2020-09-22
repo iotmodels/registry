@@ -11,7 +11,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
- - script: az storage blob upload-batch -d '$web/dtmi' --account-name iotmodelsregistry -s dtmi --if-unmodified-since 2018-01-01T01:01:01Z --account-key $MAPPED_ACCESS_KEY
+ - script: az storage blob upload-batch -d '$web/dtmi' --account-name iotmodelsregistry -s dtmi --if-unmodified-since 2018-01-01T01:01:01Z --account-key "$MAPPED_ACCESS_KEY"
    displayName: Copy Models to Storage iotmodelsregistry
    env:
     MAPPED_ACCESS_KEY: $(IOTMODELS_ACCOUNT_KEY)
