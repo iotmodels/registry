@@ -1,15 +1,10 @@
 [
   {
     "@context": "dtmi:dtdl:context;2",
-    "@id": "dtmi:com:SmartThings:SmartKnife;1",
+    "@id": "dtmi:com:pany:test;1",
     "@type": "Interface",
-    "displayName": "SmartKnife",
+    "displayName": "test",
     "contents": [
-      {
-        "@type": "Telemetry",
-        "name": "InUse",
-        "schema": "boolean"
-      },
       {
         "@type": "Telemetry",
         "name": "temperature",
