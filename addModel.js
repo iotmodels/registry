@@ -17,7 +17,7 @@ const addModel = async (file) => {
     console.error('file not found:' + file)
     process.exit()
   }
-  await parseWithDotNet(file)
+  // await parseWithDotNet(file)
 
   const rootJson = JSON.parse(fs.readFileSync(file, 'utf-8'))
 
