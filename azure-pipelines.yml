@@ -1,28 +1,14 @@
-# Starter pipeline
-
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+variables:
+  - group: GitHub2StorageVars
 
 trigger:
 - master
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
-- task: AzureFileCopy@4
-  inputs:
-    SourcePath: './dtmi/**/*.json'
-    azureSubscription: 'Converted Rido_MSDN(d8ed1ba9-6317-430f-9476-e16880367402)'
-    Destination: 'AzureBlob'
-    storage: 'iotmodelsregistry'
-    ContainerName: '$web'
-    BlobPrefix: 'dtmi'
+ - bash: az storage blob upload-batch -d '$web/dtmi' --account-name iotmodelsregistry -s dtmi --if-unmodified-since 2018-01-01T01:01:01Z --account-key $MAPPED_ACCESS_KEY
+   displayName: Copy Models to Storage iotmodelsregistry
+   env:
+    MAPPED_ACCESS_KEY: $(IOTMODELS_ACCOUNT_KEY)
