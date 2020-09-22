@@ -7,12 +7,17 @@ trigger:
   branches:
     include:
     - master
-  
+  paths:
+    include:
+    - dtmi/**
+
 pr:
   branches:
     include:
     - master
-
+  paths:
+    include:
+    - dtmi/*
 
 pool:
   vmImage: 'ubuntu-latest'
