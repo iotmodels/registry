@@ -12,4 +12,4 @@ pool:
 
 steps:
  - script: az storage blob upload-batch -d '$web/dtmi' --account-name iotmodelsregistry -s dtmi --if-umodified-since 2018-01-01T01:01:01Z --account-key ${IOTMODELS_ACCOUNT_KEY}
- - displayName: Copy Models to Storage iotmodelsregistry
+   displayName: Copy Models to Storage iotmodelsregistry
