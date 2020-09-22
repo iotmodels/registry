@@ -4,7 +4,20 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- azp
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - dtmi/**
+
+pr:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - dtmi/*
 
 pool:
   vmImage: 'ubuntu-latest'
