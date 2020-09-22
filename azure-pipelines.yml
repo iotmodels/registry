@@ -11,10 +11,5 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: AzureCLI@2
-  inputs:
-    azureSubscription: 'Converted Rido_MSDN(d8ed1ba9-6317-430f-9476-e16880367402)'
-    scriptType: 'bash'
-    scriptLocation: inlineScript
-    inlineScript: |
-      inlineScript: az storage blob upload-batch -d '$web/dtmi' --account-name iotmodelsregistry -s dtmi --if-umodified-since 2018-01-01T01:01:01Z --account-key ${IOTMODELS_ACCOUNT_KEY}
+ - displayName: Copy Models to Storage iotmodelsregistry
+ - script: az storage blob upload-batch -d '$web/dtmi' --account-name iotmodelsregistry -s dtmi --if-umodified-since 2018-01-01T01:01:01Z --account-key ${IOTMODELS_ACCOUNT_KEY}
