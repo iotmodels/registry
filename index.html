@@ -13,6 +13,17 @@
            font-size: smaller;
            color:gray
        }
+       .status {
+           margin: 5px;
+           bottom: 10px;
+           padding: 10px;
+       }
+       #rendered {
+           width: 60%;
+           padding: 10px;
+           border: gray solid 2px;
+
+       }
     </style>
 </head>
 
@@ -27,16 +38,15 @@
         samples <small>dtmi:azure:DeviceManagement:DeviceInformation;1 dtmi:com:example:TemperatureController;1 dtmi:my:device:model;3 </small>
     </div>
     <hr />
-    <div id="rendered">
-
-    </div>
+    <div id="rendered"></div>
     <script id="model-template" type="x-tmpl-mustache">
         
-        <div>
-            Default  <a href="{{schemaUrl}}">{{id}}<a>
-        </div>
-         
+        <div class="status">{{resolveStatus}}</div>
+        
         {{#Default}}
+            <div>
+                Default  <a href="{{schemaUrl}}">{{id}}<a>
+            </div>
             <ul>
               
                 {{#telemetry}}
