@@ -17,7 +17,7 @@ steps:
 
 - script: |
     npm install
-    npm run gen-deps
+    node --experimental-modules .azp/gen-all-deps.js
   displayName: 'npm install and run gen-deps'
 
 - bash: az storage blob upload-batch -d '$web/dtmi' --account-name iotmodelsregistry -s dtmi --if-unmodified-since 2018-01-01T01:01:01Z --account-key $ACCESS_KEY
