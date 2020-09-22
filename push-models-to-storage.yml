@@ -19,3 +19,6 @@ steps:
     npm install
     npm run gen-deps
   displayName: 'npm install and run gen-deps'
+
+- bash: az storage blob upload-batch -d '$web/dtmi' --account-name iotmodelsregistry -s dtmi --if-unmodified-since 2018-01-01T01:01:01Z --account-key $ACCESS_KEY
+  displayName: Copy Models and Deps to Storage iotmodelsregistry
