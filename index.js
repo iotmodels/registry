@@ -76,7 +76,7 @@ import { dtmi2path } from './dtmi2path.js'
       addComp2Model('_default', model.id)
       if (Array.isArray(rootDoc.contents)) {
         const components = rootDoc.contents.filter(c => c['@type'] === 'Component')
-        components.forEach( c => {
+        components.forEach(c => {
           if (typeof c.schema !== 'object') {
             addComp2Model(c.name, c.schema)
           }
