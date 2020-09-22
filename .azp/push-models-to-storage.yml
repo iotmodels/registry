@@ -11,7 +11,13 @@ trigger:
     include:
     - dtmi/**
 
-pr: none
+pr:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - dtmi/*
 
 pool:
   vmImage: 'ubuntu-latest'
