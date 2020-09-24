@@ -1,11 +1,4 @@
-// const fetch = require('node-fetch')
-const dtmi2path = dtmi => {
-  const idAndVersion = dtmi.toLowerCase().split(';')
-  const ids = idAndVersion[0].split(':')
-  const file = `${ids.pop()}-${idAndVersion[1]}.json`
-  const folder = ids.join('/')
-  return { folder, file }
-}
+import { dtmi2path } from './dtmi2path.js'
 
 const getDependencies = rootJson => {
   const deps = []
@@ -34,8 +27,8 @@ export const expand = async dtmi => {
   const rootAndDeps = []
 
   const walkDeps = async dtmi => {
-    const { folder, file } = dtmi2path(dtmi)
-    const url = `${folder}/${file}`
+    const file = dtmi2path(dtmi)
+    const url = `${file}`
     const doc = await (await window.fetch(url)).json()
     knownIds.push(dtmi)
     rootAndDeps.push(doc)

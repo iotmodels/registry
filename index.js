@@ -1,3 +1,4 @@
+import { expand } from './expand-dependencies.js'
 import { dtmi2path } from './dtmi2path.js'
 
 (async () => {
@@ -30,9 +31,7 @@ import { dtmi2path } from './dtmi2path.js'
     const compItem = model.Components[compPos - 1]
     compItem.name = name
     compItem.schema = cschema
-    const { modelFolder, fileName } = dtmi2path(cschema)
-    const url = `${modelFolder}/${fileName}`
-    compItem.schemaUrl = url
+    compItem.schemaUrl = dtmi2path(cschema)
 
     if (Array.isArray(comp.contents)) {
       comp.contents.forEach(c => {
@@ -62,12 +61,13 @@ import { dtmi2path } from './dtmi2path.js'
       const dtmi = gbid('q').value
       bindTemplate('model-template', '', 'rendered')
 
-      const { modelFolder, fileName } = dtmi2path(dtmi)
-      const url = `${modelFolder}/${fileName.replace('.json', '.deps.json')}`
+      // const fileName = dtmi2path(dtmi)
+      // const url = `${fileName}`
+      // model.resolveStatus = `Resolving ${dtmi} with ${url}..`
+      // docs = await (await window.fetch(url)).json()
+      // model.resolveStatus = `Resolving ${dtmi} with ${url} OK !!`
 
-      model.resolveStatus = `Resolving ${dtmi} with ${url}..`
-      docs = await (await window.fetch(url)).json()
-      model.resolveStatus = `Resolving ${dtmi} with ${url} OK !!`
+      docs = await expand(dtmi)
 
       const rootDoc = docs.filter(doc => doc['@id'] === dtmi)[0]
       model.id = rootDoc['@id']

@@ -27,10 +27,10 @@ const addModel = async (file) => {
     const id = rootJson['@id']
     const deps = getDependencies(rootJson)
     deps.forEach(d => {
-      const { modelFolder, fileName } = dtmi2path(d)
-      if (fs.existsSync(path.join(modelFolder, fileName))) {
+      const fileName = dtmi2path(d)
+      if (fs.existsSync(fileName)) {
         console.log(`Dependency ${d} found in the index`)
-        const model = JSON.parse(fs.readFileSync(path.join(modelFolder, fileName), 'utf-8'))
+        const model = JSON.parse(fs.readFileSync( fileName, 'utf-8'))
         if (model['@id'] !== d) {
           console.log(`ERROR: LowerCase issue with dependent id ${d}. Was ${model['@id']}. Aborting`)
           process.exit()
@@ -41,15 +41,16 @@ const addModel = async (file) => {
       }
     })
 
-    const { modelFolder, fileName } = dtmi2path(id)
-    if (fs.existsSync(path.join(modelFolder, fileName))) {
-      console.log(`ERROR: ID ${id} already exists at ${modelFolder}/${fileName} . Aborting `)
+    const fileName = dtmi2path(id)
+    if (fs.existsSync( fileName)) {
+      console.log(`ERROR: ID ${id} already exists at ${fileName} . Aborting `)
       process.exit()
     }
+    const modelFolder = path.dirname(fileName)
     mkdirp(modelFolder).then(async m => {
       console.log(`folder created ${modelFolder}`)
-      fs.copyFileSync(file, path.join(modelFolder, fileName))
-      console.log(`Model ${id} added successfully to ${modelFolder}/${fileName}`)
+      fs.copyFileSync(file, fileName)
+      console.log(`Model ${id} added successfully to ${fileName}`)
 
       // const deps = await expand(id)
       // const depsFile = path.join(modelFolder, fileName.replace('.json', '.deps.json'))
