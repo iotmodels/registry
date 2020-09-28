@@ -30,7 +30,7 @@ const addModel = async (file) => {
       const fileName = dtmi2path(d)
       if (fs.existsSync(fileName)) {
         console.log(`Dependency ${d} found in the index`)
-        const model = JSON.parse(fs.readFileSync( fileName, 'utf-8'))
+        const model = JSON.parse(fs.readFileSync(fileName, 'utf-8'))
         if (model['@id'] !== d) {
           console.log(`ERROR: LowerCase issue with dependent id ${d}. Was ${model['@id']}. Aborting`)
           process.exit()
@@ -42,7 +42,7 @@ const addModel = async (file) => {
     })
 
     const fileName = dtmi2path(id)
-    if (fs.existsSync( fileName)) {
+    if (fs.existsSync(fileName)) {
       console.log(`ERROR: ID ${id} already exists at ${fileName} . Aborting `)
       process.exit()
     }
