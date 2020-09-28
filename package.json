@@ -39,12 +39,12 @@
     "@types/jsonata": "^1.5.1",
     "@types/mustache": "^4.0.1",
     "jsonata": "^1.8.3",
-    "mkdirp": "^1.0.4",
     "node-fetch": "^2.6.1",
-    "standard": "^14.3.4"
+    "standard": "^14.3.4",
+    "jest": "^26.4.2"
   },
   "dependencies": {
     "glob": "^7.1.6",
-    "jest": "^26.4.2"
+    "mkdirp": "^1.0.4"
   }
 }
