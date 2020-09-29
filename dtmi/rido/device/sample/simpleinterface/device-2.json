@@ -1,6 +1,6 @@
 {
     "@context": "dtmi:dtdl:context;2",
-    "@id": "dtmi:rido:device:sample:simpleinterface:device;1",
+    "@id": "dtmi:rido:device:sample:simpleinterface:device;2",
     "@type": "Interface",
     "displayName": "minimal interface",
     "contents": [
