@@ -1,17 +1,17 @@
 # This file can appear in /CODEOWNERS or in /.github/CODEOWNERS
 
 # Global code owners
-dtmi/ @ridomin # Rido owns everything becuase this is his repo
-dtmi/azure @montgomp
-dtmi/azureiot @digimaun
-dtmi/com/example @ridomin
-dtmi/com/demo @ridomin
-dtmi/com/pany @ridomin
-dtmi/com/smartthings @rido-min
-dtmi/contoso @ridomin
-dtmi/dev/* @ridomin
-dtmi/my/* @digimaun
-dtmi/rido/* @ridomin
+/dtmi/ @ridomin # Rido owns everything becuase this is his repo
+/dtmi/azure @montgomp
+/dtmi/azureiot @digimaun
+/dtmi/com/example @ridomin
+/dtmi/com/demo @ridomin
+/dtmi/com/pany @ridomin
+/dtmi/com/smartthings @rido-min
+/dtmi/contoso @ridomin
+/dtmi/dev/* @ridomin
+/dtmi/my/* @digimaun
+/dtmi/rido/* @ridomin
 
 # Order matters, permissions are always additive
 # Please turn on branch protection in sthe Settings/Branches to enforce owners are required to perform code reviews of PR
