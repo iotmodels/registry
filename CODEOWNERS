@@ -9,9 +9,9 @@ dtmi/com/demo @ridomin
 dtmi/com/pany @ridomin
 dtmi/com/smartthings @rido-min
 dtmi/contoso @ridomin
-dtmi/dev @ridomin
-dtmi/my @rido-min
-dtmi/rido @ridomin
+dtmi/dev/* @ridomin
+dtmi/my/* @rido-min
+dtmi/rido/* @ridomin
 
 # Order matters, permissions are always additive
 # Please turn on branch protection in sthe Settings/Branches to enforce owners are required to perform code reviews of PR
