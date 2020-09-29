@@ -1,0 +1,26 @@
+{
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:com:pany:test;6",
+  "@type": "Interface",
+  "displayName": "test",
+  "contents": [
+    {
+      "@type": "Component",
+      "name": "myComp01",
+      "schema": "dtmi:my:device:interface;1"
+    },
+    {
+      "@type": "Property",
+      "name": "deviceStatus",
+      "schema": "string"
+    },
+    {
+      "@type": "Command",
+      "name": "reboot",
+      "request": {
+        "name": "delay",
+        "schema": "integer"
+      }
+    }
+  ]
+}
