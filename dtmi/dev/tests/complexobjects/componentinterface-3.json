@@ -1,0 +1,35 @@
+{
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:dev:tests:ComplexObjects:ComponentInterface;3",
+  "@type": "Interface",
+    "contents": [
+    {
+      "@type": "Component",
+      "name": "comp1",
+      "schema": {
+        "@type": "Interface",
+        "@id": "dtmi:dev:tests:ComplexObjects:ComponentInterface:Comp;3",
+        "contents": [
+          { 
+            "@type" : "Property", 
+            "name" : "AComplexProperty", 
+            "writable": true,
+            "schema" : {
+              "@type": "Object",
+              "fields": [
+                {
+                  "name": "customerName",
+                  "schema": "string"
+                },
+                {
+                  "name": "customerId",
+                  "schema": "integer"
+                }
+              ]
+            } 
+          }
+        ]
+      }
+    }
+  ]
+}
