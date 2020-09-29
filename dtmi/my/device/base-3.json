@@ -1,8 +1,8 @@
 {
     "@context": "dtmi:dtdl:context;2",
-    "@id": "dtmi:my:device:base;2",
+    "@id": "dtmi:my:device:base;3",
     "@type": "Interface",
-    "displayName": "mydevice 2",
+    "displayName": "mydevice",
     "contents": [
         { 
               "@type" : "Property", 
