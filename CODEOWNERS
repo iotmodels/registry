@@ -10,7 +10,7 @@ dtmi/com/pany @ridomin
 dtmi/com/smartthings @rido-min
 dtmi/contoso @ridomin
 dtmi/dev/* @ridomin
-dtmi/my/* @rido-min
+dtmi/my/* @digimaun
 dtmi/rido/* @ridomin
 
 # Order matters, permissions are always additive
