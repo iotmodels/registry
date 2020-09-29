@@ -2,6 +2,7 @@
   "@context": "dtmi:dtdl:context;2",
   "@id": "dtmi:dev:tests:ComplexObjects:ComponentInterface;3",
   "@type": "Interface",
+  "displayName": "base interface to test",
     "contents": [
     {
       "@type": "Component",
