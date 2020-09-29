@@ -2,7 +2,7 @@
     "@context": "dtmi:dtdl:context;2",
     "@id": "dtmi:my:device:base;2",
     "@type": "Interface",
-    "displayName": "mydevice",
+    "displayName": "mydevice 2",
     "contents": [
         { 
               "@type" : "Property", 
