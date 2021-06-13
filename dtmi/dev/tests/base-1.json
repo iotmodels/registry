@@ -1,0 +1,14 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:dev:tests:base;1",
+    "@type": "Interface",
+    "displayName": "mydevice",
+    "contents": [
+        { 
+              "@type" : "Property", 
+             "name" : "serialNumber", 
+             "schema" : "string" 
+        }
+    ]
+}
+  
